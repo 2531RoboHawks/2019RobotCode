@@ -13,6 +13,9 @@ public class RobotMap {
     public static double crabEncoderScale = 1;
     public static double climbEncoderScale = 1;
 
+    public static final int liftMax = 96;
+    public static final int liftMin = 0;
+
     // heights of game locations to the nearest inch in inches
 
     // HAB

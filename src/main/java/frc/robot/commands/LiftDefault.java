@@ -66,6 +66,12 @@ public class LiftDefault extends Command {
     double power = pid.compute(Robot.lift.getPosition());
     if ((power > 0 && Robot.lift.isAtTop()) || (power < 0 && Robot.lift.isAtBottom())) {
       Robot.lift.stop();
+      if (Robot.lift.isAtBottom()) {
+        Robot.lift.setSensor(RobotMap.liftMin);
+      }
+      if (Robot.lift.isAtTop()) {
+        Robot.lift.setSensor(RobotMap.liftMax);
+      }
     } else {
       Robot.lift.set(power);
     }

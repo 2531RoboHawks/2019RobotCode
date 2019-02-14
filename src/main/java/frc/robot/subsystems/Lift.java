@@ -36,4 +36,12 @@ public class Lift extends Subsystem {
   public boolean isAtTop() {
     return motor1.getSensorCollection().isFwdLimitSwitchClosed();
   }
+
+  public void zero() {
+    setSensor(0);
+  }
+
+  public void setSensor(int pos) {
+    motor1.getSensorCollection().setQuadraturePosition(pos, 30);
+  }
 }
