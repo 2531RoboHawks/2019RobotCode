@@ -1,0 +1,23 @@
+
+CAN IDs
+0 PCM (Pneumatic Control Modual)
+1 left drive motor (Talon SRX)
+2 left drive motor (Talon SRX)
+3 right drive motor (Talon SRX)
+4 right drive motor (Talon SRX)
+5 lift motor (Talon SRX) (needs upper and lower limit switches and encoder on data port)
+6 lift motor (Talon SRX)
+7 crab axis motor (Talon SRX) (needs upper and lower limit switches and encoder on data port)
+8 intake motor (Talon SRX)
+9 climber front motor (Talon SRX) (needs upper and lower limit switches and encoder on data port)
+10 climber back motor (Talon SRX) (needs upper and lower limit switches and encoder on data port)
+11 stilt motor (Talon SRX)
+
+PCM Solenoids
+0 shifers high
+1 shifers low
+2 hatch panel clamp open
+3 hatch panel clamp close
+
+RoboRIO DIO
+0 cargo detection switch
