@@ -1,11 +1,11 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Intake extends Subsystem {
 
-  private WPI_TalonSRX motor = new WPI_TalonSRX(8);
+  private WPI_VictorSPX motor = new WPI_VictorSPX(8);
 
   @Override
   public void initDefaultCommand() {

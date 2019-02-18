@@ -9,8 +9,7 @@ public class RobotMap {
     // vex encoder 360 counts per revolution
 
     // scaling variables
-    public static double liftEncoderScale = ((96 / 33.6) * (1.3 * Math.PI)) / 360;
-    public static double crabEncoderScale = 1;
+    public static double liftEncoderScale = (1.3 * Math.PI) / 360;
     public static double climbEncoderScale = 1;
 
     public static final int liftMax = 96;
@@ -18,23 +17,24 @@ public class RobotMap {
 
     // heights of game locations to the nearest inch in inches
 
-    // HAB
-    public static final int HAB_LEVEL3 = 19; // climb height for level 3 hab platform
-    public static final int HAB_LEVEL2 = 6; // climb height for level 2 hab platform
-    // Cargoship
-    public static final int CARGOSHIP_HATCH = 19;// lift height of hatch placement on cargoship
-    public static final int CARGOSHIP_CARGO = 40;// lift height of cargo drop on cargoship
-    // Rocket
-    public static final int ROCKET_LEVEL1_HATCH = 19; // lift height of level 1 hatch placement on rocket
-    public static final int ROCKET_LEVEL2_HATCH = 47; // lift height of level 2 hatch placement on rocket
-    public static final int ROCKET_LEVEL3_HATCH = 75; // lift height of level 3 hatch placement on rocket
-    public static final int ROCKET_LEVEL1_CARGO = 28; // lift height of level 1 cargo drop on rocket
-    public static final int ROCKET_LEVEL2_CARGO = 56; // lift height of level 2 cargo drop on rocket
-    public static final int ROCKET_LEVEL3_CARGO = 84; // lift height of level 3 cargo drop on rocket
-    // Loading Station
-    public static final int LOADING_CARGO = 43; // lift height to take cargo from loading station
-    public static final int LOADING_HATCH = 19; // lift height to take hatch from loading station
+    public static final int CARGO = 0;
+    public static final int HATCH = 1;
 
+    public static final int LEVEL1 = 0;
+    public static final int LEVEL2 = 1;
+    public static final int LEVEL3 = 2;
+
+    // HAB
+    public static final int[] HAB = { 0, 6, 19 }; // climb height for level 2 hab platform
+    // Cargoship
+    public static final int[] CARGOSHIP = { 40, 19 };// lift height of hatch placement on cargoship
+    // Rocket
+    public static final int[] ROCKET_LEVEL1 = { 28, 19 }; // lift height of level 1 cargo drop on rocket
+    public static final int[] ROCKET_LEVEL2 = { 56, 47 }; // lift height of level 2 cargo drop on rocket
+    public static final int[] ROCKET_LEVEL3 = { 84, 75 }; // lift height of level 3 cargo drop on rocket
+    // Loading Station
+    public static final int[] LOADING_CARGO = { 43, 43 }; // lift height to take cargo from loading station
+    public static final int[] LOADING_HATCH = { 19, 19 };
     // PID On Target Identifiers
     public static boolean liftOnTarget = false;
     public static boolean crabOnTarget = false;

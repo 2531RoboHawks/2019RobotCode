@@ -8,7 +8,6 @@ import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.HatchClamp;
 import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.CrabAxis;
 
 public class Robot extends TimedRobot {
 
@@ -16,7 +15,6 @@ public class Robot extends TimedRobot {
   public static Climber climber;
   public static Intake intake;
   public static HatchClamp hatchClamp;
-  public static CrabAxis crabAxis;
   public static Lift lift;
   public static OI oi;
 
@@ -26,7 +24,6 @@ public class Robot extends TimedRobot {
     driveSystem = new DriveSystem();
     climber = new Climber();
     intake = new Intake();
-    // crabAxis = new CrabAxis();
     lift = new Lift();
     oi = new OI();
     RobotMap.imu.calibrate();

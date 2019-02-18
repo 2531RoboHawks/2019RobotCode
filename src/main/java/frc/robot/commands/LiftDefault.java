@@ -8,7 +8,7 @@ import frclib.pid.PID;
 
 public class LiftDefault extends Command {
 
-  private int height = 0;
+  private int[] height = { 0, 0 };
 
   private PID pid = new PID(0.08, 0, 0, 0);
 
@@ -20,45 +20,33 @@ public class LiftDefault extends Command {
   protected void initialize() {
     System.out.println("-> Lift Default");
     pid.setOnTargetCount(10);
-    pid.setOutputLimits(-0.1, 0.1);
+    pid.setOutputLimits(-0.5, 0.5);
     pid.setOnTargetOffset(1);
   }
 
   @Override
   protected void execute() {
     if (OI.gamepad.getRawButton(OI.LOAD_HATCH_HEIGHT_BUTTON)) {
-      height = RobotMap.LOADING_HATCH;
+      height = RobotMap.LOADING_CARGO;
     } else if (OI.gamepad.getRawButton(OI.LOAD_CARGO_HEIGHT_BUTTON)) {
       height = RobotMap.LOADING_HATCH;
     } else if (OI.gamepad.getRawButton(OI.SCORE_CARGOSHIP_BUTTON)) {
-      if (RobotMap.cargoDetestionSwitch.get()) {
-        height = RobotMap.CARGOSHIP_CARGO;
-      } else {
-        height = RobotMap.CARGOSHIP_HATCH;
-      }
+      height = RobotMap.CARGOSHIP;
     } else if (OI.gamepad.getRawButton(OI.SCORE_ROCKET_LOW_BUTTON)) {
-      if (RobotMap.cargoDetestionSwitch.get()) {
-        height = RobotMap.ROCKET_LEVEL1_CARGO;
-      } else {
-        height = RobotMap.ROCKET_LEVEL1_HATCH;
-      }
+      height = RobotMap.ROCKET_LEVEL1;
     } else if (OI.gamepad.getRawButton(OI.SCORE_ROCKET_MID_BUTTON)) {
-      if (RobotMap.cargoDetestionSwitch.get()) {
-        height = RobotMap.ROCKET_LEVEL2_CARGO;
-      } else {
-        height = RobotMap.ROCKET_LEVEL2_HATCH;
-      }
+      height = RobotMap.ROCKET_LEVEL2;
     } else if (OI.gamepad.getRawButton(OI.SCORE_ROCKET_HIGH_BUTTON)) {
-      if (RobotMap.cargoDetestionSwitch.get()) {
-        height = RobotMap.ROCKET_LEVEL3_CARGO;
-      } else {
-        height = RobotMap.ROCKET_LEVEL3_HATCH;
-      }
+      height = RobotMap.ROCKET_LEVEL3;
     } else if (OI.gamepad.getRawButton(OI.RETURN_BUTTON)) {
-      height = 0;
+      height = new int[] { 0, 0 };
     }
-    if (OI.joystick.getRawButton(OI.LIFT_TRIGGER_BUTTON)) {
-      pid.setSetpoint(height + RobotMap.liftAdjustment);
+    if (OI.joystick_right.getRawButton(OI.LIFT_TRIGGER_BUTTON)) {
+      int c = RobotMap.HATCH;
+      if (RobotMap.cargoDetestionSwitch.get()) {
+        c = RobotMap.CARGO;
+      }
+      pid.setSetpoint(-(height[c] + RobotMap.liftAdjustment));
     } else {
       // pid.setSetpoint(0);
       Robot.lift.stop();
@@ -76,7 +64,11 @@ public class LiftDefault extends Command {
       Robot.lift.set(power);
     }
     RobotMap.liftOnTarget = pid.onTarget();
-    RobotMap.liftTargetHeight = height;
+    int c = RobotMap.HATCH;
+    if (RobotMap.cargoDetestionSwitch.get()) {
+      c = RobotMap.CARGO;
+    }
+    RobotMap.liftTargetHeight = height[c];
   }
 
   @Override

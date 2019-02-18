@@ -6,6 +6,8 @@ import frc.robot.Robot;
 
 public class Drive extends Command {
 
+  private boolean lastgear;
+
   public Drive() {
     requires(Robot.driveSystem);
   }
@@ -14,19 +16,28 @@ public class Drive extends Command {
   protected void initialize() {
     System.out.println("-> Drive");
     Robot.driveSystem.shiftGear(false);
+    lastgear = Robot.driveSystem.isHighGear();
   }
 
   @Override
   protected void execute() {
-    if (OI.joystick.getRawButton(OI.SHIFT_DRIVE_BUTTON)) {
+    if (OI.joystick_right.getRawButton(OI.SHIFT_DRIVE_BUTTON)) {
       Robot.driveSystem.shiftGear(true);
+      if (lastgear != true) {
+        System.out.println("high gear");
+        lastgear = true;
+      }
     } else {
       Robot.driveSystem.shiftGear(false);
+      if (lastgear != false) {
+        System.out.println("low gear");
+        lastgear = false;
+      }
     }
-    double x = OI.joystick.getRawAxis(OI.X_AXIS);
-    double y = OI.joystick.getRawAxis(OI.Y_AXIS);
-    if (Math.abs(x) > 0.1 || Math.abs(y) > 0.1) {
-      Robot.driveSystem.arcadeDrive(y, x);
+    double r = OI.joystick_right.getRawAxis(OI.Y_AXIS);
+    double l = OI.joystick_left.getRawAxis(OI.Y_AXIS);
+    if (Math.abs(r) > 0.2 || Math.abs(l) > 0.2) {
+      Robot.driveSystem.tankDrive(l, r);
     } else {
       Robot.driveSystem.stop();
     }

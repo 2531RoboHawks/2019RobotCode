@@ -20,8 +20,10 @@ public class AdjustLift extends Command {
 
   @Override
   protected void execute() {
-    RobotMap.liftAdjustment += a;
-    done = true;
+    if (!done) {
+      RobotMap.liftAdjustment += a;
+      done = true;
+    }
   }
 
   @Override

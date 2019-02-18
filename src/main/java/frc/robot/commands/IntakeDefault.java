@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class IntakeDefault extends Command {
@@ -9,7 +10,8 @@ public class IntakeDefault extends Command {
   private Command action = null;
 
   public IntakeDefault() {
-
+    requires(Robot.intake);
+    requires(Robot.hatchClamp);
   }
 
   @Override
@@ -19,11 +21,11 @@ public class IntakeDefault extends Command {
 
   @Override
   protected void execute() {
-    if (OI.joystick.getRawButton(OI.GRAB_HATCH_BUTTON)) {
+    if (OI.joystick_right.getRawButton(OI.GRAB_HATCH_BUTTON)) {
       action = new GrabHatch();
-    } else if (OI.joystick.getRawButton(OI.GRAB_CARGO_BUTTON)) {
+    } else if (OI.joystick_right.getRawButton(OI.GRAB_CARGO_BUTTON)) {
       action = new GrabCargo();
-    } else if (OI.joystick.getRawButton(OI.PLACE_BUTTON)) {
+    } else if (OI.joystick_right.getRawButton(OI.PLACE_BUTTON)) {
       if (RobotMap.cargoDetestionSwitch.get()) {
         action = new PlaceCargo();
       } else {
