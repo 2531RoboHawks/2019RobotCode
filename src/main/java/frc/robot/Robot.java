@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
     System.out.println("Initalization Complete");
     System.out.println("ROBOT IS GO FOR DEEP SPACE MISSION");
     System.out.println("FTL Burn Initiated...");
-    System.out.println("May the points be with you!");
+    System.out.println("May the points be with you.");
   }
 
   @Override
