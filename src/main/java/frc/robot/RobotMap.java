@@ -69,5 +69,5 @@ public class RobotMap {
     // Sensors
     public static Camera camera;
     public static ADIS16448 imu = new ADIS16448();
-    public static DigitalInput cargoDetestionSwitch = new DigitalInput(0);
+    public static DigitalInput cargoDetectionSwitch = new DigitalInput(0);
 }

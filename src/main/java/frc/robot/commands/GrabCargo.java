@@ -21,7 +21,7 @@ public class GrabCargo extends Command {
   @Override
   protected void execute() {
     Robot.intake.setMotor(0.5);
-    if (RobotMap.cargoDetestionSwitch.get()) {
+    if (RobotMap.cargoDetectionSwitch.get()) {
       if (endtime < System.currentTimeMillis()) {
         done = true;
       }

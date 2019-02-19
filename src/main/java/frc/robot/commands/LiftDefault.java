@@ -55,7 +55,7 @@ public class LiftDefault extends Command {
     }
     if (OI.joystick_right.getRawButton(OI.LIFT_TRIGGER_BUTTON)) {
       int c = RobotMap.HATCH;
-      if (RobotMap.cargoDetestionSwitch.get()) {
+      if (RobotMap.cargoDetectionSwitch.get()) {
         c = RobotMap.CARGO;
       }
       pid.setSetpoint(-(height[c] + RobotMap.liftAdjustment));
@@ -65,7 +65,7 @@ public class LiftDefault extends Command {
     }
     RobotMap.liftOnTarget = pid.onTarget();
     int c = RobotMap.HATCH;
-    if (RobotMap.cargoDetestionSwitch.get()) {
+    if (RobotMap.cargoDetectionSwitch.get()) {
       c = RobotMap.CARGO;
     }
     RobotMap.liftTargetHeight = height[c];

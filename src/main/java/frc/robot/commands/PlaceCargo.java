@@ -27,7 +27,7 @@ public class PlaceCargo extends Command {
   @Override
   protected void execute() {
     Robot.intake.setMotor(-0.5);
-    if (!RobotMap.cargoDetestionSwitch.get() && (time != 0)) {
+    if (!RobotMap.cargoDetectionSwitch.get() && (time != 0)) {
       if (endtime < System.currentTimeMillis()) {
         done = true;
       }

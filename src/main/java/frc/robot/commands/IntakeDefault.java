@@ -26,7 +26,7 @@ public class IntakeDefault extends Command {
     } else if (OI.joystick_right.getRawButton(OI.GRAB_CARGO_BUTTON)) {
       action = new GrabCargo();
     } else if (OI.joystick_right.getRawButton(OI.PLACE_BUTTON)) {
-      if (RobotMap.cargoDetestionSwitch.get()) {
+      if (RobotMap.cargoDetectionSwitch.get()) {
         action = new PlaceCargo();
       } else {
         action = new PlaceHatch();
