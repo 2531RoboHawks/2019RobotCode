@@ -20,7 +20,7 @@ public class LiftDefault extends Command {
   protected void initialize() {
     System.out.println("-> Lift Default");
     pid.setOnTargetCount(10);
-    pid.setOutputLimits(-0.5, 0.5);
+    pid.setOutputLimits(-0.3, 0.5);
     pid.setOnTargetOffset(1);
   }
 
@@ -41,16 +41,6 @@ public class LiftDefault extends Command {
     } else if (OI.gamepad.getRawButton(OI.RETURN_BUTTON)) {
       height = new int[] { 0, 0 };
     }
-    if (OI.joystick_right.getRawButton(OI.LIFT_TRIGGER_BUTTON)) {
-      int c = RobotMap.HATCH;
-      if (RobotMap.cargoDetestionSwitch.get()) {
-        c = RobotMap.CARGO;
-      }
-      pid.setSetpoint(-(height[c] + RobotMap.liftAdjustment));
-    } else {
-      // pid.setSetpoint(0);
-      Robot.lift.stop();
-    }
     double power = pid.compute(Robot.lift.getPosition());
     if ((power > 0 && Robot.lift.isAtTop()) || (power < 0 && Robot.lift.isAtBottom())) {
       Robot.lift.stop();
@@ -62,6 +52,16 @@ public class LiftDefault extends Command {
       }
     } else {
       Robot.lift.set(power);
+    }
+    if (OI.joystick_right.getRawButton(OI.LIFT_TRIGGER_BUTTON)) {
+      int c = RobotMap.HATCH;
+      if (RobotMap.cargoDetestionSwitch.get()) {
+        c = RobotMap.CARGO;
+      }
+      pid.setSetpoint(-(height[c] + RobotMap.liftAdjustment));
+    } else {
+      // pid.setSetpoint(0);
+      Robot.lift.stop();
     }
     RobotMap.liftOnTarget = pid.onTarget();
     int c = RobotMap.HATCH;
