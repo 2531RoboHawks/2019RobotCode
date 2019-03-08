@@ -26,6 +26,7 @@ public class Robot extends TimedRobot {
     System.out.println("# STARTING ROBOT");
     driveSystem = new DriveSystem();
     climber = new Climber();
+    hatchClamp = new HatchClamp();
     intake = new Intake();
     lift = new Lift();
     cameraGimbal = new CameraGimbal();

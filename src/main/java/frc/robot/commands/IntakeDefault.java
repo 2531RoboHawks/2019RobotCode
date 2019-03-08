@@ -21,23 +21,17 @@ public class IntakeDefault extends Command {
 
   @Override
   protected void execute() {
-    if (OI.joystick_right.getRawButton(OI.GRAB_HATCH_BUTTON)) {
-      action = new GrabHatch();
-    } else if (OI.joystick_right.getRawButton(OI.GRAB_CARGO_BUTTON)) {
-      action = new GrabCargo();
-    } else if (OI.joystick_right.getRawButton(OI.PLACE_BUTTON)) {
-      if (RobotMap.cargoDetectionSwitch.get()) {
-        action = new PlaceCargo();
-      } else {
-        action = new PlaceHatch();
-      }
+    if (OI.joystick_right.getRawButton(4)) {
+      Robot.intake.setMotor(-0.5);
+    } else if (OI.joystick_right.getRawButton(5)) {
+      Robot.intake.setMotor(0.5);
     } else {
-      action.cancel();
+      Robot.intake.stop();
     }
-    if (action != null && RobotMap.liftOnTarget) {
-      if (!action.isRunning()) {
-        action.start();
-      }
+    if (OI.gamepad.getRawButton(5)) {
+      Robot.hatchClamp.clamp(false);
+    } else if (OI.gamepad.getRawButton(6)) {
+      Robot.hatchClamp.clamp(true);
     }
   }
 

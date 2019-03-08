@@ -10,7 +10,7 @@ public class RobotMap {
     // vex encoder 360 counts per revolution
 
     // Encoder Constants
-    public static final double liftEncoderScale = (0.5*Math.PI) / 360;
+    public static final double liftEncoderScale = 1 / 360;
     public static final double climbEncoderScale = 1;
 
 
