@@ -18,6 +18,7 @@ public class OI {
   // joystick axies
   public static final int X_AXIS = 0;
   public static final int Y_AXIS = 1;
+  public static final int AUX_AXIS = 2;
 
   // gamepad buttons
   public static final int LOAD_HATCH_HEIGHT_BUTTON = 6;

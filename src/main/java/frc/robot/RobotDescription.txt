@@ -21,3 +21,6 @@ PCM Solenoids
 
 RoboRIO DIO
 0 cargo detection switch
+
+RoboRIO PWM
+0 camera gimbal servo

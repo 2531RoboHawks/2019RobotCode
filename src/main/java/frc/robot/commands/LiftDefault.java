@@ -20,7 +20,7 @@ public class LiftDefault extends Command {
   protected void initialize() {
     System.out.println("-> Lift Default");
     pid.setOnTargetCount(10);
-    pid.setOutputLimits(-0.3, 0.5);
+    pid.setOutputLimits(-0.3, 1);
     pid.setOnTargetOffset(1);
   }
 

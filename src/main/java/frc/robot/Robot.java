@@ -9,6 +9,7 @@ import frclib.vision.Camera;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.HatchClamp;
 import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.CameraGimbal;
 
 public class Robot extends TimedRobot {
 
@@ -17,6 +18,7 @@ public class Robot extends TimedRobot {
   public static Intake intake;
   public static HatchClamp hatchClamp;
   public static Lift lift;
+  public static CameraGimbal cameraGimbal;
   public static OI oi;
 
   @Override
@@ -26,9 +28,10 @@ public class Robot extends TimedRobot {
     climber = new Climber();
     intake = new Intake();
     lift = new Lift();
+    cameraGimbal = new CameraGimbal();
     oi = new OI();
     RobotMap.imu.calibrate();
-    RobotMap.camera = new Camera("view", 0, 640, 320);
+    // RobotMap.camera = new Camera("view", 0, 640, 320);
     initDashboard();
     System.out.println("Initalization Complete");
     System.out.println("ROBOT IS GO FOR DEEP SPACE MISSION");
@@ -39,7 +42,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     updateDashboard();
-    updateCamera();
+    // updateCamera();
   }
 
   @Override
