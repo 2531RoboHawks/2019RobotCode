@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
     cameraGimbal = new CameraGimbal();
     oi = new OI();
     RobotMap.imu.calibrate();
-    // RobotMap.camera = new Camera("view", 0, 640, 320);
+    // RobotMap.camera = new Camera("view", 0, 640,480);
     initDashboard();
     System.out.println("Initalization Complete");
     System.out.println("ROBOT IS GO FOR DEEP SPACE MISSION");

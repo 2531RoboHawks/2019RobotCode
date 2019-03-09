@@ -21,16 +21,16 @@ public class IntakeDefault extends Command {
 
   @Override
   protected void execute() {
-    if (OI.joystick_right.getRawButton(4)) {
-      Robot.intake.setMotor(-0.5);
-    } else if (OI.joystick_right.getRawButton(5)) {
-      Robot.intake.setMotor(0.5);
+    if (OI.joystick_right.getRawButton(OI.IN_CARGO_BUTTON)) {
+      Robot.intake.setMotor(-0.3);
+    } else if (OI.joystick_left.getRawButton(OI.OUT_CARGO_BUTTON)) {
+      Robot.intake.setMotor(0.3);
     } else {
       Robot.intake.stop();
     }
-    if (OI.gamepad.getRawButton(5)) {
+    if (OI.gamepad.getRawButton(OI.OPEN_HATCHCLAMP_BUTTON)) {
       Robot.hatchClamp.clamp(false);
-    } else if (OI.gamepad.getRawButton(6)) {
+    } else if (OI.gamepad.getRawButton(OI.CLOSE_HATCHCLAMP_BUTTON)) {
       Robot.hatchClamp.clamp(true);
     }
   }

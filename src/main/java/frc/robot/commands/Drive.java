@@ -34,21 +34,12 @@ public class Drive extends Command {
         lastgear = false;
       }
     }
-    if (OI.joystick_left.getRawButton(1)) {
-      double p = OI.joystick_right.getRawAxis(OI.Y_AXIS);
-      if (Math.abs(p) > 0.2) {
-        Robot.driveSystem.tankDrive(p, p);
-      } else {
-        Robot.driveSystem.stop();
-      }
+    double r = OI.joystick_right.getRawAxis(OI.Y_AXIS);
+    double l = OI.joystick_left.getRawAxis(OI.Y_AXIS);
+    if (Math.abs(r) > 0.2 || Math.abs(l) > 0.2) {
+      Robot.driveSystem.tankDrive(l, r);
     } else {
-      double r = OI.joystick_right.getRawAxis(OI.Y_AXIS);
-      double l = OI.joystick_left.getRawAxis(OI.Y_AXIS);
-      if (Math.abs(r) > 0.2 || Math.abs(l) > 0.2) {
-        Robot.driveSystem.tankDrive(l, r);
-      } else {
-        Robot.driveSystem.stop();
-      }
+      Robot.driveSystem.stop();
     }
   }
 

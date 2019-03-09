@@ -25,10 +25,10 @@ public class LiftDefault extends Command {
   @Override
   protected void execute() {
     double power = 0;
-    if (OI.gamepad.getRawButton(2)) {
-      power = -0.5;
+    if (OI.gamepad.getRawButton(OI.LIFT_DOWN_BUTTON)) {
+      power = -0.2;
     }
-    if (OI.gamepad.getRawButton(4)) {
+    if (OI.gamepad.getRawButton(OI.LIFT_UP_BUTTON)) {
       power = 0.5;
     }
     Robot.lift.set(power);
