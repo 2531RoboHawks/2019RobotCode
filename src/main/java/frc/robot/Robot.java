@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.*;
@@ -21,6 +22,7 @@ public class Robot extends TimedRobot {
   public static CameraGimbal cameraGimbal;
   public static OI oi;
 
+  @SuppressWarnings("deprecation")
   @Override
   public void robotInit() {
     System.out.println("# STARTING ROBOT");
@@ -32,12 +34,13 @@ public class Robot extends TimedRobot {
     cameraGimbal = new CameraGimbal();
     oi = new OI();
     RobotMap.imu.calibrate();
-    // RobotMap.camera = new Camera("view", 0, 640,480);
+    // RobotMap.camera = new Camera("view", 0, 320,240);
     initDashboard();
     System.out.println("Initalization Complete");
     System.out.println("ROBOT IS GO FOR DEEP SPACE MISSION");
     System.out.println("FTL Burn Initiated...");
     System.out.println("May the points be with you.");
+    CameraServer.getInstance().startAutomaticCapture(0);
   }
 
   @Override
