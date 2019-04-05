@@ -16,7 +16,7 @@ public class CameraGimbalDefault extends Command {
 
   @Override
   protected void execute() {
-    double a = OI.joystick_right.getRawAxis(OI.AUX_AXIS);
+    double a = OI.joystick_right.getRawAxis(OI.AUX_AXIS)/2;
     Robot.cameraGimbal.set(a);
   }
 

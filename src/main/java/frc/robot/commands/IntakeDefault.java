@@ -3,15 +3,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class IntakeDefault extends Command {
 
-  private Command action = null;
-
   public IntakeDefault() {
     requires(Robot.intake);
-    requires(Robot.hatchClamp);
   }
 
   @Override
@@ -21,17 +17,12 @@ public class IntakeDefault extends Command {
 
   @Override
   protected void execute() {
-    if (OI.joystick_right.getRawButton(OI.IN_CARGO_BUTTON)) {
-      Robot.intake.setMotor(-0.3);
-    } else if (OI.joystick_left.getRawButton(OI.OUT_CARGO_BUTTON)) {
-      Robot.intake.setMotor(0.3);
+    if (OI.joystick_right.getRawButton(OI.INTAKE_BUTTON)) {
+      Robot.intake.setMotor(-0.8);
+    } else if (OI.joystick_right.getRawButton(OI.OUTTAKE_BUTTON)) {
+      Robot.intake.setMotor(0.8);
     } else {
       Robot.intake.stop();
-    }
-    if (OI.gamepad.getRawButton(OI.OPEN_HATCHCLAMP_BUTTON)) {
-      Robot.hatchClamp.clamp(false);
-    } else if (OI.gamepad.getRawButton(OI.CLOSE_HATCHCLAMP_BUTTON)) {
-      Robot.hatchClamp.clamp(true);
     }
   }
 

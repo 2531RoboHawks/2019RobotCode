@@ -1,40 +1,34 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.subsystems.DriveSystem;
 import frc.robot.subsystems.Lift;
-import frclib.vision.Camera;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.HatchClamp;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.Wrist;
 import frc.robot.subsystems.CameraGimbal;
+import edu.wpi.first.cameraserver.*;
 
 public class Robot extends TimedRobot {
 
   public static DriveSystem driveSystem;
-  public static Climber climber;
   public static Intake intake;
-  public static HatchClamp hatchClamp;
   public static Lift lift;
+  public static Wrist wrist;
   public static CameraGimbal cameraGimbal;
   public static OI oi;
 
-  @SuppressWarnings("deprecation")
   @Override
   public void robotInit() {
     System.out.println("# STARTING ROBOT");
     driveSystem = new DriveSystem();
-    climber = new Climber();
-    hatchClamp = new HatchClamp();
     intake = new Intake();
     lift = new Lift();
+    wrist = new Wrist();
     cameraGimbal = new CameraGimbal();
     oi = new OI();
     RobotMap.imu.calibrate();
-    // RobotMap.camera = new Camera("view", 0, 320,240);
     initDashboard();
     System.out.println("Initalization Complete");
     System.out.println("ROBOT IS GO FOR DEEP SPACE MISSION");
@@ -46,7 +40,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     updateDashboard();
-    // updateCamera();
   }
 
   @Override
@@ -97,11 +90,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Lift Bottom Limit", lift.isAtBottom());
     SmartDashboard.putNumber("Target Height", RobotMap.liftTargetHeight);
     SmartDashboard.putNumber("Lift Adjustment", RobotMap.liftAdjustment);
-  }
-
-  public void updateCamera() {
-    RobotMap.camera.showLive();
-    System.gc();
   }
 
 }

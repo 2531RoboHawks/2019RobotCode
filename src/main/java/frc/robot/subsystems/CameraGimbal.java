@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.CameraGimbalDefault;
 
 public class CameraGimbal extends Subsystem {
 
@@ -9,6 +10,7 @@ public class CameraGimbal extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
+    setDefaultCommand(new CameraGimbalDefault());
 
   }
 
@@ -20,4 +22,3 @@ public class CameraGimbal extends Subsystem {
     set(0);
   }
 }
- 

@@ -21,7 +21,7 @@ public class Drive extends Command {
 
   @Override
   protected void execute() {
-    if (OI.joystick_right.getRawButton(2)) {
+    if (OI.joystick_right.getRawButton(OI.SHIFT_DRIVE_BUTTON)) {
       Robot.driveSystem.shiftGear(true);
       if (lastgear != true) {
         System.out.println("high gear");
@@ -37,7 +37,17 @@ public class Drive extends Command {
     double r = OI.joystick_right.getRawAxis(OI.Y_AXIS);
     double l = OI.joystick_left.getRawAxis(OI.Y_AXIS);
     if (Math.abs(r) > 0.2 || Math.abs(l) > 0.2) {
-      Robot.driveSystem.tankDrive(l, r);
+      if (OI.joystick_left.getRawButton(OI.SYNC_DRIVE_BUTTON)) {
+        double p = 0;
+        if (Math.abs(l) > Math.abs(r)) {
+          p = l;
+        } else {
+          p = r;
+        }
+        Robot.driveSystem.tankDrive(p, p);
+      } else {
+        Robot.driveSystem.tankDrive(l, r);
+      }
     } else {
       Robot.driveSystem.stop();
     }
