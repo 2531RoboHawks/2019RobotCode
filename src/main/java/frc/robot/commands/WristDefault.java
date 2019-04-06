@@ -18,7 +18,7 @@ public class WristDefault extends Command {
   @Override
   protected void execute() {
     if (OI.gamepad.getRawButton(OI.WRIST_UP_BUTTON)) {
-      Robot.wrist.set(0.7);
+      Robot.wrist.set(0.9);
     } else if (OI.gamepad.getRawButton(OI.WRIST_DOWN_BUTTON)) {
       Robot.wrist.set(-0.6);
     } else {

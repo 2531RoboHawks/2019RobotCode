@@ -3,11 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
-import frclib.pid.PID;
 
 public class LiftDefault extends Command {
-
-  private PID pid = new PID(0.05, 0, 0, 0);
 
   public LiftDefault() {
     requires(Robot.lift);
@@ -16,9 +13,6 @@ public class LiftDefault extends Command {
   @Override
   protected void initialize() {
     System.out.println("-> Lift Default");
-    pid.setOnTargetCount(10);
-    pid.setOutputLimits(-0.8, 0.8);
-    pid.setOnTargetOffset(1);
   }
 
   @Override
@@ -26,9 +20,11 @@ public class LiftDefault extends Command {
     double power = 0;
     if (OI.gamepad.getRawButton(OI.LIFT_DOWN_BUTTON)) {
       power = -0.2;
-    }
+    }else
     if (OI.gamepad.getRawButton(OI.LIFT_UP_BUTTON)) {
       power = 0.5;
+    }else{
+      power = 0.1;
     }
     Robot.lift.set(power);
   }

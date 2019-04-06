@@ -5,6 +5,9 @@ import frc.robot.OI;
 import frc.robot.Robot;
 
 public class CameraGimbalDefault extends Command {
+
+  private double a = 0;
+
   public CameraGimbalDefault() {
     requires(Robot.cameraGimbal);
   }
@@ -16,7 +19,7 @@ public class CameraGimbalDefault extends Command {
 
   @Override
   protected void execute() {
-    double a = OI.joystick_right.getRawAxis(OI.AUX_AXIS)/2;
+    a = OI.joystick_right.getRawAxis(OI.AUX_AXIS)/3;
     Robot.cameraGimbal.set(a);
   }
 

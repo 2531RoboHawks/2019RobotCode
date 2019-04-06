@@ -18,9 +18,9 @@ public class IntakeDefault extends Command {
   @Override
   protected void execute() {
     if (OI.joystick_right.getRawButton(OI.INTAKE_BUTTON)) {
-      Robot.intake.setMotor(-0.8);
+      Robot.intake.setMotor(0.5);
     } else if (OI.joystick_right.getRawButton(OI.OUTTAKE_BUTTON)) {
-      Robot.intake.setMotor(0.8);
+      Robot.intake.setMotor(-0.5);
     } else {
       Robot.intake.stop();
     }
